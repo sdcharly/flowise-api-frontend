@@ -7,7 +7,21 @@ export const createPrediction = async (req, res) => {
     const flowiseData = {
       question: message,
     };
+// Call the Flowise Endpoint
+    const response = await fetch(
+      ${process.env.FLOWISE_URL}/api/v1/prediction/${process.env.FLOW_ID}
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(flowiseData),
+      }
+    );
 
+    const data = await response.json();
+    console.log(data);
+    
     res.status(200).json({ message: "Demo Response" });
   } catch (error) {
     console.log(error);
