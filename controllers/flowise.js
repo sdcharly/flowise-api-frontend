@@ -9,7 +9,7 @@ export const createPrediction = async (req, res) => {
     };
 // Call the Flowise Endpoint
     const response = await fetch(
-      `${process.env.FLOWISE_URL}/api/v1/prediction/${process.env.FLOW_ID}`
+      `${process.env.FLOWISE_URL}/api/v1/prediction/${process.env.FLOW_ID}`,
       {
         method: "POST",
         headers: {
