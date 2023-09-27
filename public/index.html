@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Chat</title>
+    <title>AI Web Chat</title>
       <link rel="stylesheet" href="css/styles.css">
-      <script src="app.js" defer></script>
+    <script src="app.js" defer></script>
 </head>
 <body>
     <div class="grid">
@@ -47,7 +47,7 @@
                 <div class="chat-right">
                   <div class="chat-right-top">
                     <span class="contact-name">David R Cook</span>
-                    <span class="chat-date">Yestarday</span>
+                    <span class="chat-date">Yesterday</span>
                   </div>
                   <div class="chat-right-bottom">
                     <div class="chat-right-bottom-left">
@@ -158,48 +158,23 @@
                 <img class="chat-window-menu-icon" src="images/menu-icon.svg" />
               </div>
             </div>
-            <div class="chat-window">  
-              <div class="sender">
-                <span class="sender-message-tail"><img src="./images/message-tail-sender.svg"></span>
-                <span class="sender-message">Hey! How's it going?</span>
-                <span class="message-time">21:32</span>
-                <span class="message-status"><img src="./images/double-check-seen.svg"></span>
-              </div>
-              <div class="receiver">
-                <span class="receiver-message-tail"><img src="./images/message-tail-receiver.svg"></span>
-                <span class="receiver-message">I'm doing fine! What about you??</span>
-                <span class="message-time">21:35</span>
-              </div>
-              <div class="sender">
-                <span class="sender-message-tail"><img src="images/message-tail-sender.svg"></span>
-                <span class="sender-message">I'm good</span>
-                <span class="message-time">21:35</span>
-                <span class="message-status"><img src="./images/double-check-seen.svg"></span>
-              </div>
-                <div class="sender">
-                <span class="sender-message-tail"><img src="images/message-tail-sender.svg"></span>
-                <span class="sender-message" id="response" Chatbot's response goes here..</span>
-                <span class="message-time">21:35</span>
-                <span class="message-status"><img src="./images/double-check-seen.svg"></span>
-              </div
+            <div class="chat-window" id="chat">  
+
             </div>
+	<form>
             <div class="type-message-bar">
               <div class="type-message-bar-left">
                 <img src="images/icons.svg" />
                 <img src="images/attach-icon.svg" />
               </div>
               <div class="type-message-bar-center">
-                    <input type="text" placeholder="Type a message" >
-                    <form class="text-left">
-                    <input type="text" id="message" placeholder="Enter prompt" class="bg-gray-100 border-2 w-full p-4 rounded-lg mb-4" />
-                    <button type="submit" id="message-btn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl uppercase">
-                  Send
-                  </form>
+                <input type="text" placeholder="Type a message" id="message">
               </div>
               <div class="type-message-bar-right">
-                <img src="images/send.png" width="50" >
+		<input type="image" src="images/send.png" width="50" id="message-btn" alt="submit" />
               </div>
             </div>
+	</form>
           </div> 
         </div>
       </div>
