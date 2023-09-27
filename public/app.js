@@ -1,33 +1,50 @@
 const form = document.querySelector("form");
 const messageInput = document.getElementById("message");
-const responseEl = document.getElementById("response");
 const messageBtn = document.getElementById("message-btn");
+const chat = document.getElementById("chat");
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
+if ( messageInput.value == '' ) return ;
+const input =  messageInput.value ;
+messageInput.value = '' ;
+console.log(input);
 
-  console.log(messageInput.value);
+chat.innerHTML = chat.innerHTML + '<div class="sender"><span class="sender-message-tail"><img src="./images/message-tail-sender.svg"></span>' +
+'<span class="sender-message">' + input  + '</span>' +
+'<span class="message-time">' + getdate() + '</span>' +
+'<span class="message-status"><img src="./images/double-check-seen.svg"></span>' +
+'</div>' ;
 
   messageBtn.disabled = true;
-  messageBtn.innerHTML = "Sending...";
 
   try {
-    const res = await fetch("/api/flowise", {
+    const res = await fetch("https://ai.kol.tel/api/flowise", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ message: messageInput.value }),
+      body: JSON.stringify({ message: input}),
     });
 
     const data = await res.json();
 
-    responseEl.innerHTML = data.message;
+chat.innerHTML = chat.innerHTML + '<div class="receiver">' +
+'<span class="receiver-message-tail"><img src="./images/message-tail-receiver.svg"></span>' +
+'<span class="receiver-message">' + data.message + '</span>' +
+'<span class="message-time">' + getdate() + '</span>' +
+'</div>' ;
+
   } catch (error) {
-    responseEl.innerHTML = error.message;
+    alert(error.message);
   } finally {
     messageBtn.disabled = false;
-    messageBtn.innerHTML = "Send";
-    messageInput.value = "";
   }
 });
+
+function getdate() {
+var d = new Date,
+    dformat = [d.getHours(),
+               d.getMinutes()].join(':');
+return dformat ;
+}
